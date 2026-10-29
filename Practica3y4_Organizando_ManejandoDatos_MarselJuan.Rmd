@@ -370,7 +370,7 @@ Crea un data frame denominado `flights.f` que contenga los vuelos que involucren
 
 ```{r }
 
-flights.f <- right_join( flights, planes.f)
+flights.f <- inner_join( flights, planes.f, by='tailnum')
 
 
 ```
@@ -396,9 +396,9 @@ Existen variables que, a priori, no tienen demasiado interés para el estudio qu
 
 ```{r }
 
-flights_new <- flights %>% select(- 'time_hour', - ends_with('time', ignore.case = TRUE))
+flights <- flights %>% select(- 'time_hour', - ends_with('time', ignore.case = TRUE))
 
-planes_new <- planes %>% select(-'speed', -'type')
+planes <- planes %>% select(-'speed', -'type')
 
 ```
 
@@ -408,7 +408,7 @@ Incorpora una nueva variable a `flights` denominado `Full_Date` que sea de tipo 
 
 ```{r }
 
-flights_new <- flights_new %>% mutate( Full_Date = as.character(paste(day,month, year, sep='-')), .keep = 'unused')
+flights <- flights %>% mutate( Full_Date = as.character(paste(day,month, year.x, sep='-')), .keep = 'unused')
 
 
 ```
@@ -418,6 +418,13 @@ flights_new <- flights_new %>% mutate( Full_Date = as.character(paste(day,month,
 Utilizando las funciones `group_by`, `summarise` y `filter`, crea un data frame donde se calcule el número de vuelos (`Num_flights`), la distancia media recorrida (`Mean_distance`) y la distancia total recorrida (`Total_distance`) para cada uno de los aviones (`tailnum`) presentes en el conjunto `flights`. Descarta aquellos registros del data frame en los que la variable `tailnum` tenga un valor NA. Utiliza el operador pipe para enlazar las funciones. Almacena el data frame en una variable denominada `Distances_plane`.  
 
 ```{r }
+
+flights1 <-  flights %>% 
+  filter(!is.na(tailnum)) %>%
+  group_by(tailnum) %>%
+  summarise(Num_fligths =n(),
+            Total_distance=sum(distance, na.rm=T),
+            Mean_distance = mean(distance, na.rm=T))
 
 ```
 
