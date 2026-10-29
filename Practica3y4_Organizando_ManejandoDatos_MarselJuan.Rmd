@@ -355,7 +355,7 @@ En nuestro estudio queremos aplicar una serie de criterios de exclusión sobre l
 library(dplyr)
 
 planes.f <- planes %>% 
-  filter(!(manufacturer %in% c('MCDONNELL DOUGLAS', 'MCDONNELL DOUGLAS AIRCRAFT CO', 'MCDONNELL DOUGLAS CORPORATION', 'DOUGLAS'))) %>%
+  filter(!(manufacturer %in% c('MCDONNELL DOUGLAS', 'MCDONNELL DOUGLAS AIRCRAFT CO', 'MCDONNELL DOUGLAS CORPORATION'))) %>%
   filter(seats >=90 & seats<= 210) %>%
   mutate(manufacturer = ifelse(grepl('AIRBUS', manufacturer), 'AIRBUS COMP', manufacturer))
   
@@ -369,6 +369,8 @@ planes.f <- planes %>%
 Crea un data frame denominado `flights.f` que contenga los vuelos que involucren a los aviones presentes en el data frame `planes.f`. Para ello utiliza algunas de las funciones de **XXX_join** y la variable `tailnum` que es común en ambos data frames. 
 
 ```{r }
+
+flights.f <- right_join( flights, planes.f)
 
 
 ```
