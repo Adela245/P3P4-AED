@@ -419,7 +419,7 @@ Utilizando las funciones `group_by`, `summarise` y `filter`, crea un data frame 
 
 ```{r }
 
-flights1 <-  flights %>% 
+Distances_plane <-  flights %>% 
   filter(!is.na(tailnum)) %>%
   group_by(tailnum) %>%
   summarise(Num_fligths =n(),
