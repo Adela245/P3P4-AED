@@ -396,6 +396,10 @@ Existen variables que, a priori, no tienen demasiado interés para el estudio qu
 
 ```{r }
 
+flights_new <- flights %>% select(- 'time_hour', - ends_with('time', ignore.case = TRUE))
+
+planes_new <- planes %>% select(-'speed', -'type')
+
 ```
 
 ### Ejercicio 10
