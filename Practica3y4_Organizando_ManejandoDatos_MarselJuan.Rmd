@@ -2,15 +2,15 @@
 title: "Práctica 3 y 4. Preparación y manejo de Datos"
 subtitle: "Análisis Exploratorio de Datos, Máster en Ciencia de Datos - UV"
 output:
+  pdf_document:
+    toc: yes
+    toc_depth: 3
+    number_sections: no
   html_document:
     echo: yes
     number_sections: no
     theme: lumen
     toc: yes
-  pdf_document:
-    toc: yes
-    toc_depth: 3
-    number_sections: no
 ---
 
 ```{r setup, cache=F, echo=F, message=F, warning=F, tidy=F}
@@ -342,8 +342,9 @@ Muestra las primeras muestras de ambos data frames para hacerte una idea de las 
 ```{r }
 head(flights)
 head(planes)
-# El primer data frame contiene informacion de los vuelos, con su duración, fecha... Y las columnas que aparecen no son independientes entre sí, puedes inferir unas a partir de otras. Por tanto, no es tidy, mientras que el segundo sí
+
 ```
+El primer data frame contiene informacion de los vuelos, con su duración, fecha... Y las columnas que aparecen no son independientes entre sí, puedes inferir unas a partir de otras. Por tanto, no es tidy, mientras que el segundo sí
 
 ### Ejercicio 6
 
