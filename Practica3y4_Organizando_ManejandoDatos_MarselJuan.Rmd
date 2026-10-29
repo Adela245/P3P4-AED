@@ -408,6 +408,8 @@ Incorpora una nueva variable a `flights` denominado `Full_Date` que sea de tipo 
 
 ```{r }
 
+flights_new <- flights_new %>% mutate( Full_Date = as.character(paste(day,month, year, sep='-')), .keep = 'unused')
+
 
 ```
 
